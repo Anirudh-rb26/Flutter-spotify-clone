@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "963403330342",
+    "project_id": "boombox-af2d4",
+    "storage_bucket": "boombox-af2d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963403330342:android:356e17fb6c843b4c1e87e7",
+        "android_client_info": {
+          "package_name": "com.example.spotifyclone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDs6dDm0EhDrpEuDNh62CFs_zu8vS4tKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

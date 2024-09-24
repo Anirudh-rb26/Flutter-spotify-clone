@@ -1,11 +1,17 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotifyclone/common/helpers/is_darkmode.dart';
 import 'package:spotifyclone/common/widgets/button/primary_button.dart';
-import 'package:spotifyclone/core/assets/app_assets/app_images.dart';
-import 'package:spotifyclone/core/assets/app_assets/app_vectors.dart';
+import 'package:spotifyclone/core/configs/assets/app_assets/app_images.dart';
+import 'package:spotifyclone/core/configs/assets/app_assets/app_vectors.dart';
 import 'package:spotifyclone/core/configs/theme/app_colors.dart';
+import 'package:spotifyclone/main.dart';
+import 'package:spotifyclone/presentation/auth%20screens/signup_or_signin.dart';
+import 'package:spotifyclone/presentation/introduction%20screens/bloc/theme_cubit.dart';
 
 class ChooseThemeScreen extends StatefulWidget {
   const ChooseThemeScreen({super.key});
@@ -72,15 +78,13 @@ class _ChooseThemeScreenState extends State<ChooseThemeScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-                              isLightMode = true;
-                            });
+                            context.read<ThemeCubit>().updateTheme(ThemeMode.light);
                           },
 
                           // IconButton
                           child: ClipOval(
                             child: BackdropFilter(
-                              filter: isLightMode ? ImageFilter.blur(sigmaX: 50, sigmaY: 50) : ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                              filter: context.isDarkMode ? ImageFilter.blur(sigmaX: 5, sigmaY: 5) : ImageFilter.blur(sigmaX: 50, sigmaY: 50),
                               child: Container(
                                 height: 80,
                                 width: 80,
@@ -121,15 +125,13 @@ class _ChooseThemeScreenState extends State<ChooseThemeScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-                              isLightMode = false;
-                            });
+                            context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
                           },
 
                           // IconButton
                           child: ClipOval(
                             child: BackdropFilter(
-                              filter: isLightMode ? ImageFilter.blur(sigmaX: 5, sigmaY: 5) : ImageFilter.blur(sigmaX: 50, sigmaY: 50),
+                              filter: context.isDarkMode ? ImageFilter.blur(sigmaX: 50, sigmaY: 50) : ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                               child: Container(
                                 height: 80,
                                 width: 80,
@@ -170,9 +172,9 @@ class _ChooseThemeScreenState extends State<ChooseThemeScreen> {
                 // Primary ElevatedButton
                 PrimaryButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ChooseThemeScreen()),
+                      CupertinoPageRoute(builder: (context) => const SignupOrSignin()),
                     );
                   },
                   buttonTitle: "Start Listening",

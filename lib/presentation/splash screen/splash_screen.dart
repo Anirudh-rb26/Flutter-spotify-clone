@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotifyclone/core/assets/app_assets/app_vectors.dart';
-import 'package:spotifyclone/presentation/screen/landing%20screen/get_started.dart';
+import 'package:spotifyclone/core/configs/assets/app_assets/app_vectors.dart';
+import 'package:spotifyclone/presentation/introduction%20screens/get_started.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

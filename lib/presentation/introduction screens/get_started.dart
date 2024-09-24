@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotifyclone/common/widgets/button/primary_button.dart';
-import 'package:spotifyclone/core/assets/app_assets/app_images.dart';
-import 'package:spotifyclone/core/assets/app_assets/app_vectors.dart';
-import 'package:spotifyclone/presentation/screen/landing%20screen/choose_theme.dart';
+import 'package:spotifyclone/core/configs/assets/app_assets/app_images.dart';
+import 'package:spotifyclone/core/configs/assets/app_assets/app_vectors.dart';
+import 'package:spotifyclone/presentation/introduction%20screens/choose_theme.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -72,7 +73,7 @@ class GetStartedScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const ChooseThemeScreen()),
+                      CupertinoPageRoute(builder: (context) => const ChooseThemeScreen()),
                     );
                   },
                   buttonTitle: "Get Started",
