@@ -6,8 +6,9 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:spotifyclone/core/configs/theme/app_theme.dart';
 import 'package:spotifyclone/firebase_options.dart';
-import 'package:spotifyclone/presentation/introduction%20screens/bloc/theme_cubit.dart';
-import 'package:spotifyclone/presentation/splash%20screen/splash_screen.dart';
+import 'package:spotifyclone/presentation/home/pages/home_screen.dart';
+import 'package:spotifyclone/presentation/introduction_screens/bloc/theme_cubit.dart';
+import 'package:spotifyclone/presentation/splash_screen/splash_screen.dart';
 import 'package:spotifyclone/service_locator.dart';
 
 Future<void> main() async {
@@ -42,10 +43,12 @@ class MyApp extends StatelessWidget {
         builder: (context, mode) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
+            // theme: AppTheme.darkTheme,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: mode,
-            home: const SplashScreen(),
+            // home: const SplashScreen(),
+            home: HomeScreen(),
           );
         },
       ),

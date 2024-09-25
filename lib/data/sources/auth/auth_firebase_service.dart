@@ -41,7 +41,7 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       );
 
       FirebaseFirestore.instance.collection("users").add({
-        'name': data.user?.displayName,
+        'name': createUserRequest.userName,
         'email': data.user?.email,
       });
 
@@ -57,5 +57,10 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
 
       return Left(message);
     }
+  }
+
+  @override
+  Future<User?> checkAuthState() async {
+    return FirebaseAuth.instance.currentUser;
   }
 }

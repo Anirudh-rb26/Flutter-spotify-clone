@@ -27,7 +27,7 @@ class AppTheme {
       contentPadding: const EdgeInsets.all(30),
       // HintText Style
       hintStyle: const TextStyle(color: Color(0xff373737), fontWeight: FontWeight.w500),
-      hintFadeDuration: const Duration(seconds: 1),
+      hintFadeDuration: const Duration(milliseconds: 250),
       // Default Case
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),

@@ -7,8 +7,8 @@ import 'package:spotifyclone/common/widgets/button/primary_button.dart';
 import 'package:spotifyclone/core/configs/assets/app_assets/app_images.dart';
 import 'package:spotifyclone/core/configs/assets/app_assets/app_vectors.dart';
 import 'package:spotifyclone/core/configs/theme/app_colors.dart';
-import 'package:spotifyclone/presentation/auth%20screens/register_screen.dart';
-import 'package:spotifyclone/presentation/auth%20screens/login_screen.dart';
+import 'package:spotifyclone/presentation/auth_screens/register_screen.dart';
+import 'package:spotifyclone/presentation/auth_screens/login_screen.dart';
 
 class SignupOrSignin extends StatelessWidget {
   const SignupOrSignin({super.key});

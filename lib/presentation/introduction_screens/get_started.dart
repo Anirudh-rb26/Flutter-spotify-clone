@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotifyclone/common/widgets/button/primary_button.dart';
 import 'package:spotifyclone/core/configs/assets/app_assets/app_images.dart';
 import 'package:spotifyclone/core/configs/assets/app_assets/app_vectors.dart';
-import 'package:spotifyclone/presentation/introduction%20screens/choose_theme.dart';
+import 'package:spotifyclone/presentation/introduction_screens/choose_theme.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});

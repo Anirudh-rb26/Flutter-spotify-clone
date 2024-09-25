@@ -1,22 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:spotifyclone/common/widgets/appbar/appbar.dart';
 import 'package:spotifyclone/common/widgets/button/primary_button.dart';
 import 'package:spotifyclone/core/configs/assets/app_assets/app_vectors.dart';
-import 'package:spotifyclone/core/configs/theme/app_colors.dart';
-import 'package:spotifyclone/data/model/auth/create_user_request.dart';
-import 'package:spotifyclone/domain/usecases/auth/register_usecase.dart';
-import 'package:spotifyclone/presentation/auth%20screens/login_screen.dart';
+import 'package:spotifyclone/data/model/auth/login_user_request.dart';
+import 'package:spotifyclone/domain/usecases/auth/login_usecase.dart';
+import 'package:spotifyclone/presentation/auth_screens/register_screen.dart';
 import 'package:spotifyclone/presentation/home/pages/home_screen.dart';
 import 'package:spotifyclone/service_locator.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
+class SignInScreen extends StatelessWidget {
+  SignInScreen({super.key});
 
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +27,17 @@ class RegisterScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _registerText(),
+              _logInText(),
               const SizedBox(height: 50),
-              _nameTextFeild(_nameController),
-              const SizedBox(height: 20),
               _emailTextFeild(_emailController),
               const SizedBox(height: 20),
               _passwordTextFeild(_passwordController),
               const SizedBox(height: 20),
               PrimaryButton(
                 onPressed: () async {
-                  var result = await serviceLocator<RegisterUsecase>().call(
-                    params: CreateUserRequest(
-                      userName: _nameController.text.toString(),
+                  var result = await serviceLocator<LoginUsecase>().call(
+                    params: LoginUserRequest(
                       email: _emailController.text.toString(),
                       password: _passwordController.text.toString(),
                     ),
@@ -54,6 +48,7 @@ class RegisterScreen extends StatelessWidget {
                       var snackbar = SnackBar(
                         content: Text(left, style: const TextStyle(color: Colors.white)),
                       );
+
                       ScaffoldMessenger.of(context).showSnackBar(snackbar);
                     },
                     (right) {
@@ -65,7 +60,7 @@ class RegisterScreen extends StatelessWidget {
                     },
                   );
                 },
-                buttonTitle: "Create your Account",
+                buttonTitle: "Log In",
               ),
             ],
           ),
@@ -74,17 +69,10 @@ class RegisterScreen extends StatelessWidget {
     );
   }
 
-  Widget _registerText() {
+  Widget _logInText() {
     return const Text(
-      "Register",
+      "Log In",
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-    );
-  }
-
-  Widget _nameTextFeild(TextEditingController controller) {
-    return TextField(
-      controller: controller,
-      decoration: const InputDecoration(hintText: "Full Name"),
     );
   }
 
@@ -111,7 +99,7 @@ class RegisterScreen extends StatelessWidget {
         children: [
           // Normal Text
           const Text(
-            "Already have an account?",
+            "Don't have an Account?",
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
@@ -121,13 +109,14 @@ class RegisterScreen extends StatelessWidget {
           // Clickable Text
           TextButton(
             onPressed: () {
-              Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => SignInScreen()));
+              Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => RegisterScreen()));
             },
             child: const Text(
-              "Log In",
+              "Create an Account",
               style: TextStyle(
                 color: Colors.blueAccent,
                 fontSize: 14,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),

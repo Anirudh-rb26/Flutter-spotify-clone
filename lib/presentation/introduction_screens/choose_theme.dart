@@ -10,8 +10,8 @@ import 'package:spotifyclone/core/configs/assets/app_assets/app_images.dart';
 import 'package:spotifyclone/core/configs/assets/app_assets/app_vectors.dart';
 import 'package:spotifyclone/core/configs/theme/app_colors.dart';
 import 'package:spotifyclone/main.dart';
-import 'package:spotifyclone/presentation/auth%20screens/signup_or_signin.dart';
-import 'package:spotifyclone/presentation/introduction%20screens/bloc/theme_cubit.dart';
+import 'package:spotifyclone/presentation/auth_screens/signup_or_signin.dart';
+import 'package:spotifyclone/presentation/introduction_screens/bloc/theme_cubit.dart';
 
 class ChooseThemeScreen extends StatefulWidget {
   const ChooseThemeScreen({super.key});
