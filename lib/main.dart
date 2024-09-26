@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:spotifyclone/core/configs/theme/app_colors.dart';
 import 'package:spotifyclone/core/configs/theme/app_theme.dart';
 import 'package:spotifyclone/firebase_options.dart';
 import 'package:spotifyclone/presentation/home/pages/home_screen.dart';
@@ -43,12 +46,24 @@ class MyApp extends StatelessWidget {
         builder: (context, mode) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            // theme: AppTheme.lightTheme,
-            theme: AppTheme.darkTheme,
+            // theme: AppTheme.darkTheme,
+            theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: mode,
-            // home: const SplashScreen(),
-            home: HomeScreen(),
+            home: FutureBuilder<User?>(
+              future: FirebaseAuth.instance.authStateChanges().first,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CupertinoActivityIndicator(color: AppColors.primary));
+                } else {
+                  if (snapshot.hasData && snapshot.data != null) {
+                    return const HomeScreen();
+                  } else {
+                    return const SplashScreen();
+                  }
+                }
+              },
+            ),
           );
         },
       ),

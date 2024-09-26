@@ -120,7 +120,7 @@ class SongPlayerScreen extends StatelessWidget {
                 ],
               ),
 
-              // SongControl Buttons
+              // PlayPause Button
               GestureDetector(
                 onTap: () => context.read<PlayerCubit>().playOrPauseSong(),
                 child: Container(
@@ -146,6 +146,7 @@ class SongPlayerScreen extends StatelessWidget {
     );
   }
 
+  // To format duration from "3.14" to "03:14"
   String formatDuration(Duration duration) {
     final minutes = duration.inMinutes.remainder(60);
     final seconds = duration.inSeconds.remainder(60);
