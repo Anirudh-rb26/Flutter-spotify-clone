@@ -65,7 +65,7 @@ class SongCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
-                        image: NetworkImage(AppUrls.urlFirestorage + songs[index].title + AppUrls.mediaAlt),
+                        image: NetworkImage(AppUrls.urlImagesFirestorage + songs[index].title + AppUrls.imageMediaAlt),
                         fit: BoxFit.cover,
                       ),
                     ),
